@@ -1,0 +1,49 @@
+Esercizio di Java - Difficoltà Crescente
+
+## Parte 1: Ereditarietà
+
+1. Crea una classe base chiamata `Veicolo` con i seguenti campi e metodi:
+   - `String marca`
+   - `String modello`
+   - `void accendi()`: stampa "Il veicolo è acceso"
+
+2. Crea una classe derivata chiamata `Auto` che estende `Veicolo` e aggiungi i seguenti campi e metodi:
+   - `int numeroPorte`
+   - `void suonaClacson()`: stampa "Beep beep!"
+
+3. Crea una classe derivata chiamata `Moto` che estende `Veicolo` e aggiungi i seguenti campi e metodi:
+   - `boolean haSidecar`
+   - `void impennata()`: stampa "La moto sta impennando!"
+
+4. Crea una classe derivata chiamata `Bicicletta` che estende `Veicolo` e aggiungi i seguenti campi e metodi:
+   - `int numeroMarce`
+   - `void pedala()`: stampa "La bicicletta sta pedalando!"
+
+## Parte 2: Polimorfismo
+
+1. Crea un metodo `toString()` che accetta un oggetto di tipo `Veicolo` e stampa i dettagli del veicolo (marca e modello).
+
+2. Crea un metodo `testaVeicolo(Veicolo veicolo)` che accetta un oggetto di tipo `Veicolo` e chiama i metodi `accendi` e, se l'oggetto è di tipo `Auto`, chiama anche `suonaClacson`, se è di tipo `Moto`, chiama anche `impennata`, se è di tipo `Bicicletta`, chiama anche `pedala`.
+
+3. Crea una classe `Garage` che contiene un array di oggetti `Veicolo` e un metodo `aggiungiVeicolo(Veicolo veicolo)` per aggiungere un veicolo al garage.
+
+4. Crea un metodo `mostraTuttiDettagli()` nella classe `Garage` che itera attraverso l'array di veicoli e chiama `mostraDettagli` per ciascun veicolo.
+
+## Parte 3: Incapsulamento
+
+1. Modifica la classe `Veicolo` per rendere i campi `marca` e `modello` privati e aggiungi i metodi getter e setter per questi campi.
+
+2. Modifica la classe `Auto` per rendere il campo `numeroPorte` privato e aggiungi i metodi getter e setter per questo campo.
+
+3. Modifica la classe `Moto` per rendere il campo `haSidecar` privato e aggiungi i metodi getter e setter per questo campo.
+
+4. Modifica la classe `Bicicletta` per rendere il campo `numeroMarce` privato e aggiungi i metodi getter e setter per questo campo.
+
+## Obiettivo
+
+Implementa le classi e i metodi descritti sopra e crea un programma principale che:
+1. Crea un oggetto `Auto`, un oggetto `Moto` e un oggetto `Bicicletta`.
+2. Imposta i valori dei campi utilizzando i metodi setter.
+3. Crea un oggetto `Garage` e aggiungi i veicoli creati al garage.
+4. Chiama il metodo `mostraTuttiDettagli` per visualizzare i dettagli di tutti i veicoli nel garage.
+5. Chiama il metodo `testaVeicolo` per ciascun veicolo.
