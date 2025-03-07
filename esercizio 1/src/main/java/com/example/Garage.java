@@ -10,7 +10,12 @@ public class Garage{
     }
 
     public void aggiungiVeicolo(Veicolo veicolo){
-        veicoli.
+        veicoli.add(veicolo);
     }
-    
+
+    public void mostraTuttiDettagli(){
+        for (int i=0; i< veicoli.size();i++){
+            System.out.println("\n"+veicoli.get(i).toString());
+        }
+    }
 }
