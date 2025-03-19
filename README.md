@@ -2,6 +2,8 @@
 
 Java è un linguaggio di programmazione ad alto livello, orientato agli oggetti, sviluppato da Sun Microsystems (ora di proprietà di Oracle). È progettato per essere portabile, sicuro e robusto, ed è ampiamente utilizzato per lo sviluppo di applicazioni web, desktop e mobile.
 
+https://www.w3schools.com/java/default.asp
+
 ## Concetti Principali
 
 ### Ereditarietà
@@ -134,6 +136,9 @@ public class Main {
 ```
 
 In questo esempio, il campo `nome` della classe `Persona` è privato, quindi non può essere accessibile direttamente dall'esterno della classe. Tuttavia, possiamo accedere e modificare il campo `nome` utilizzando i metodi pubblici `getNome` e `setNome`.
+
+## Stringhe
+https://www.w3schools.com/java/java_strings.asp
 
 ## Conclusione
 
