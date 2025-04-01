@@ -4,6 +4,18 @@ Java è un linguaggio di programmazione ad alto livello, orientato agli oggetti,
 
 https://www.w3schools.com/java/default.asp
 
+## Indice dei Contenuti
+
+- [Concetti Principali](#concetti-principali)
+  - [Ereditarietà](#ereditarietà)
+  - [Classi Astratte](#classi-astratte)
+  - [Interfacce](#interfacce)
+  - [Polimorfismo](#polimorfismo)
+  - [Incapsulamento](#incapsulamento)
+  - [Eccezioni](#eccezioni)
+- [Stringhe](#stringhe)
+- [Conclusione](#conclusione)
+
 ## Concetti Principali
 
 ### Ereditarietà
