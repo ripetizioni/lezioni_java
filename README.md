@@ -14,6 +14,7 @@ https://www.w3schools.com/java/default.asp
   - [Incapsulamento](#incapsulamento)
   - [Eccezioni](#eccezioni)
 - [Stringhe](#stringhe)
+- [JavaFX](#javafx)
 - [Conclusione](#conclusione)
 
 ## Concetti Principali
@@ -495,7 +496,255 @@ Le eccezioni sono un potente strumento che permette di gestire situazioni anomal
 ## Stringhe
 https://www.w3schools.com/java/java_strings.asp
 
+## JavaFX
 
+JavaFX è una piattaforma software per la creazione e distribuzione di applicazioni desktop e applicazioni Internet ricche (RIA) che possono essere eseguite su vari dispositivi. JavaFX è inteso come sostituto di Swing per lo sviluppo di interfacce grafiche utente (GUI) in applicazioni Java.
+
+### Installazione e Setup
+
+Per utilizzare JavaFX con Java 11 o versioni successive, è necessario:
+
+1. Scaricare JavaFX SDK dal sito ufficiale di OpenJFX: https://openjfx.io/
+2. Aggiungere i moduli JavaFX al tuo progetto
+3. Configurare le opzioni del modulo nel progetto
+
+Per progetti Maven, aggiungere queste dipendenze:
+
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-controls</artifactId>
+        <version>17.0.2</version>
+    </dependency>
+    <dependency>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-fxml</artifactId>
+        <version>17.0.2</version>
+    </dependency>
+</dependencies>
+```
+
+### Struttura Base di un'Applicazione JavaFX
+
+Un'applicazione JavaFX è composta principalmente da:
+
+1. **Stage**: La finestra principale dell'applicazione
+2. **Scene**: Il contenitore per tutti gli elementi dell'interfaccia utente
+3. **Nodi**: Gli elementi dell'interfaccia utente (pulsanti, etichette, ecc.)
+
+Ecco un esempio di base:
+
+```java
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+public class PrimaAppJavaFX extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) {
+        // Creazione di un pulsante
+        Button btn = new Button("Cliccami!");
+        btn.setOnAction(e -> System.out.println("Ciao, JavaFX!"));
+        
+        // Creazione di un layout
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+        
+        // Creazione della scena
+        Scene scene = new Scene(root, 300, 250);
+        
+        // Configurazione dello stage
+        primaryStage.setTitle("Prima App JavaFX");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+```
+
+Per eseguire questa applicazione con Java 11+, usa il comando:
+
+```
+java --module-path /path/to/javafx-sdk/lib --add-modules javafx.controls,javafx.fxml -jar MyApp.jar
+```
+
+### Layout Manager
+
+JavaFX offre diversi layout manager per organizzare i componenti dell'interfaccia:
+
+1. **StackPane**: Impila i nodi uno sopra l'altro
+2. **HBox**: Dispone i nodi in una singola riga orizzontale
+3. **VBox**: Dispone i nodi in una singola colonna verticale
+4. **BorderPane**: Dispone i nodi in cinque aree: top, right, bottom, left e center
+5. **GridPane**: Dispone i nodi in una griglia flessibile di righe e colonne
+6. **FlowPane**: Dispone i nodi in un flusso orizzontale o verticale
+7. **TilePane**: Dispone i nodi in una griglia di celle di dimensioni uniformi
+8. **AnchorPane**: Consente di ancorare i nodi ai bordi del contenitore
+
+### Componenti UI Comuni
+
+JavaFX include numerosi componenti UI precostruiti:
+
+- **Controlli di base**: Button, Label, TextField, TextArea
+- **Controlli di selezione**: CheckBox, RadioButton, ChoiceBox, ComboBox
+- **Controlli complessi**: TableView, ListView, TreeView
+- **Controlli di layout**: TabPane, Accordion, SplitPane
+- **Controlli di dialogo**: Alert, Dialog, FileChooser
+
+### Scene Builder
+
+JavaFX Scene Builder è uno strumento di progettazione visuale che permette di creare interfacce utente senza scrivere codice. Genera file FXML che possono essere caricati nell'applicazione JavaFX.
+
+```java
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class AppFXML extends Application {
+    
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("layout.fxml"));
+        Scene scene = new Scene(root, 400, 300);
+        
+        primaryStage.setTitle("App FXML");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+```
+
+### Gestione degli Eventi
+
+JavaFX utilizza un sistema di gestione degli eventi per rispondere alle interazioni dell'utente:
+
+```java
+Button btn = new Button("Cliccami!");
+
+// Uso di una lambda expression
+btn.setOnAction(event -> {
+    System.out.println("Pulsante cliccato!");
+});
+
+// Oppure usando un event handler
+btn.setOnAction(new EventHandler<ActionEvent>() {
+    @Override
+    public void handle(ActionEvent event) {
+        System.out.println("Pulsante cliccato!");
+    }
+});
+```
+
+### CSS Styling
+
+JavaFX supporta CSS per personalizzare l'aspetto dell'applicazione:
+
+```css
+/* esterno.css */
+.button {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: #45a049;
+}
+```
+
+Applicare il CSS all'applicazione:
+
+```java
+scene.getStylesheets().add(getClass().getResource("esterno.css").toExternalForm());
+```
+
+### Esempio di Applicazione Completa
+
+Ecco un esempio di un'applicazione ToDo semplice con JavaFX:
+
+```java
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.stage.Stage;
+
+public class ToDoApp extends Application {
+    
+    private ListView<String> taskListView;
+    private ObservableList<String> tasks;
+    private TextField taskInput;
+    
+    @Override
+    public void start(Stage primaryStage) {
+        BorderPane root = new BorderPane();
+        root.setPadding(new Insets(10));
+        
+        // Creazione della lista di attività
+        tasks = FXCollections.observableArrayList();
+        taskListView = new ListView<>(tasks);
+        
+        // Creazione dell'area input
+        HBox inputArea = new HBox(10);
+        taskInput = new TextField();
+        HBox.setHgrow(taskInput, Priority.ALWAYS);
+        Button addButton = new Button("Aggiungi");
+        Button deleteButton = new Button("Elimina");
+        
+        inputArea.getChildren().addAll(taskInput, addButton, deleteButton);
+        
+        // Gestione eventi
+        addButton.setOnAction(e -> {
+            String task = taskInput.getText().trim();
+            if (!task.isEmpty()) {
+                tasks.add(task);
+                taskInput.clear();
+            }
+        });
+        
+        deleteButton.setOnAction(e -> {
+            int selectedIndex = taskListView.getSelectionModel().getSelectedIndex();
+            if (selectedIndex >= 0) {
+                tasks.remove(selectedIndex);
+            }
+        });
+        
+        // Assemblaggio della scena
+        root.setCenter(taskListView);
+        root.setBottom(inputArea);
+        
+        Scene scene = new Scene(root, 450, 400);
+        
+        primaryStage.setTitle("ToDo App");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+    
+    public static void main(String[] args) {
+        launch(args);
+    }
+}
+```
+
+JavaFX offre una vasta gamma di funzionalità per creare applicazioni desktop moderne e interattive con Java, supportando animazioni, multimedia, grafica vettoriale e molto altro.
 
 ## Conclusione
 
