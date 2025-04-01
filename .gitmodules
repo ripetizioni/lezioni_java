@@ -4,3 +4,6 @@
 [submodule "esercizio-2"]
 	path = esercizio-2
 	url = https://github.com/ripetizioni/esercizio-2.git
+[submodule "esercizio_3"]
+	path = esercizio_3
+	url = https://github.com/ripetizioni/esercizio_3.git
