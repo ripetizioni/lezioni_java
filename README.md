@@ -221,39 +221,6 @@ public class EsempioInterfacce {
 }
 ```
 
-#### Interfacce Funzionali
-
-Da Java 8, un'interfaccia con un solo metodo astratto è chiamata interfaccia funzionale. Queste interfacce possono essere implementate usando espressioni lambda, che consentono una programmazione più concisa.
-
-```java
-@FunctionalInterface  // Annotazione opzionale che garantisce che l'interfaccia abbia un solo metodo astratto
-interface Calcolatore {
-    int calcola(int a, int b);
-}
-
-public class EsempioInterfacciaFunzionale {
-    public static void main(String[] args) {
-        // Implementazione tramite classe anonima
-        Calcolatore addizione = new Calcolatore() {
-            @Override
-            public int calcola(int a, int b) {
-                return a + b;
-            }
-        };
-        
-        // Implementazione tramite espressione lambda
-        Calcolatore sottrazione = (a, b) -> a - b;
-        Calcolatore moltiplicazione = (a, b) -> a * b;
-        Calcolatore divisione = (a, b) -> b != 0 ? a / b : 0;
-        
-        System.out.println("Addizione: " + addizione.calcola(10, 5));       // Output: 15
-        System.out.println("Sottrazione: " + sottrazione.calcola(10, 5));   // Output: 5
-        System.out.println("Moltiplicazione: " + moltiplicazione.calcola(10, 5)); // Output: 50
-        System.out.println("Divisione: " + divisione.calcola(10, 5));       // Output: 2
-    }
-}
-```
-
 #### Differenze tra Interfacce e Classi Astratte
 
 | Caratteristica | Interfaccia | Classe Astratta |
